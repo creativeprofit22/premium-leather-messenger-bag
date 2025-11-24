@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 25 95% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 35 85% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 42 88% 55%;
+    --accent-foreground: 25 20% 15%;
+    --background: 40 25% 96%;
+    --foreground: 25 20% 15%;
+    --muted: 35 15% 88%;
+    --muted-foreground: 30 10% 45%;
+    --border: 35 20% 82%;
+    --input: 35 20% 82%;
+    --ring: 25 95% 45%;
+    --card: 40 20% 98%;
+    --card-foreground: 25 20% 15%;
+    --radius-sm: 1rem;
+    --radius-md: 1.5rem;
+    --radius-lg: 2rem;
+  }
+
+  .dark {
+    --primary: 25 90% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 35 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 42 85% 65%;
+    --accent-foreground: 25 25% 8%;
+    --background: 25 25% 8%;
+    --foreground: 40 20% 92%;
+    --muted: 30 20% 18%;
+    --muted-foreground: 35 15% 65%;
+    --border: 30 20% 22%;
+    --input: 30 20% 22%;
+    --ring: 25 90% 55%;
+    --card: 28 22% 12%;
+    --card-foreground: 40 20% 92%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .organic-card {
+    @apply rounded-xl bg-card text-card-foreground shadow-md transition-all duration-300;
+    box-shadow: 0 4px 16px hsla(25, 50%, 10%, 0.12);
+  }
+
+  .organic-card:hover {
+    @apply shadow-lg;
+    box-shadow: 0 8px 32px hsla(25, 50%, 10%, 0.16);
+    transform: translateY(-4px);
+  }
+
+  .dark .organic-card {
+    box-shadow: 0 4px 16px hsla(25, 50%, 5%, 0.3);
+  }
+
+  .dark .organic-card:hover {
+    box-shadow: 0 8px 32px hsla(25, 50%, 5%, 0.4);
+  }
+
+  .organic-button {
+    @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold transition-all duration-300;
+    @apply bg-primary text-primary-foreground shadow-md;
+    @apply hover:shadow-lg hover:scale-105 active:scale-95;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    min-height: 48px;
+    box-shadow: 0 4px 16px hsla(25, 95%, 45%, 0.3);
+  }
+
+  .organic-button:hover {
+    box-shadow: 0 8px 24px hsla(25, 95%, 45%, 0.4);
+  }
+
+  .dark .organic-button {
+    box-shadow: 0 4px 16px hsla(25, 90%, 55%, 0.4);
+  }
+
+  .dark .organic-button:hover {
+    box-shadow: 0 8px 24px hsla(25, 90%, 55%, 0.5);
+  }
+
+  .organic-blob {
+    @apply absolute rounded-full opacity-30 blur-3xl;
+    background: linear-gradient(135deg, hsl(25, 95%, 45%) 0%, hsl(42, 88%, 55%) 100%);
+    animation: blob-float 20s ease-in-out infinite;
+  }
+
+  .organic-blob-delayed {
+    animation: blob-float 25s ease-in-out infinite 5s;
+  }
+
+  .gradient-organic {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+}
